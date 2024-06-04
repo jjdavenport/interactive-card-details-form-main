@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="main.js" defer></script>
+
+    <title>Frontend Mentor | Interactive card details form</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 0.6875rem;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <span> 0000 0000 0000 0000 </span>
+      <span> Jane Appleseed </span>
+      <span> 00/00 </span>
+      <span>000</span>
+      <label for="input">Cardholder Name</label>
+      <input type="text" placeholder="e.g. Jane Appleseed" />
+      <label for="input">Card Number</label>
+      <input type="text" placeholder="e.g. 1234 5678 9123 0000" />
+      <label for="input">Exp. Date (MM/YY)</label>
+      <input type="number" placeholder="MM" />
+      <input type="number" placeholder="YY" />
+      <label for="input">CVC</label>
+      <input type="number" placeholder="e.g. 123" />
+      <button>Confirm</button>
+      <!-- Completed state start -->
+      <dialog>
+        <h1>Thank you!</h1>
+        <span>We've added your card details</span>
+        <button>Continue</button>
+      </dialog>
+    </main>
+    <footer class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="https://github.com/jjdavenport">jjdavenport</a>.
+    </footer>
+  </body>
+</html>
