@@ -29,20 +29,26 @@
   </head>
   <body>
     <main>
-      <span> 0000 0000 0000 0000 </span>
-      <span> Jane Appleseed </span>
-      <span> 00/00 </span>
-      <span>000</span>
-      <label for="input">Cardholder Name</label>
-      <input type="text" placeholder="e.g. Jane Appleseed" />
-      <label for="input">Card Number</label>
-      <input type="text" placeholder="e.g. 1234 5678 9123 0000" />
-      <label for="input">Exp. Date (MM/YY)</label>
-      <input type="number" placeholder="MM" />
-      <input type="number" placeholder="YY" />
-      <label for="input">CVC</label>
-      <input type="number" placeholder="e.g. 123" />
-      <button>Confirm</button>
+      <span id="card-output">0000 0000 0000 0000</span>
+      <span id="name-output"> Jane Appleseed </span>
+      <span id="month-output">00/</span><span id="year-output">00</span>
+      <span id="cvc-output">000</span>
+      <form novalidate>
+        <label for="input">Cardholder Name</label>
+        <input id="name-input" type="text" placeholder="e.g. Jane Appleseed" />
+        <label for="input">Card Number</label>
+        <input
+          id="card-number-input"
+          type="number"
+          placeholder="e.g. 1234 5678 9123 0000"
+        />
+        <label for="input">Exp. Date (MM/YY)</label>
+        <input id="month-input" type="number" placeholder="MM" />
+        <input id="year-input" type="number" placeholder="YY" />
+        <label for="input">CVC</label>
+        <input id="cvc-input" type="number" placeholder="e.g. 123" />
+        <button type="submit">Confirm</button>
+      </form>
       <!-- Completed state start -->
       <dialog>
         <h1>Thank you!</h1>
