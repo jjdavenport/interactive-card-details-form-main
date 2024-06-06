@@ -35,18 +35,32 @@
       <span id="cvc-output">000</span>
       <form novalidate>
         <label for="input">Cardholder Name</label>
-        <input id="name-input" type="text" placeholder="e.g. Jane Appleseed" />
+        <input
+          class="input"
+          id="name-input"
+          placeholder="e.g. Jane Appleseed"
+        />
         <label for="input">Card Number</label>
         <input
-          id="card-number-input"
-          type="number"
+          class="input"
+          id="card-input"
           placeholder="e.g. 1234 5678 9123 0000"
         />
         <label for="input">Exp. Date (MM/YY)</label>
-        <input id="month-input" type="number" placeholder="MM" />
-        <input id="year-input" type="number" placeholder="YY" />
+        <input
+          class="input"
+          id="month-input"
+          placeholder="MM"
+          pattern="\d{2}"
+        />
+        <input class="input" id="year-input" placeholder="YY" />
         <label for="input">CVC</label>
-        <input id="cvc-input" type="number" placeholder="e.g. 123" />
+        <input
+          class="input"
+          id="cvc-input"
+          placeholder="e.g. 123"
+          maxlength="3"
+        />
         <button type="submit">Confirm</button>
       </form>
       <!-- Completed state start -->

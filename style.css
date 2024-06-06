@@ -19,6 +19,11 @@ main {
 }
 
 form {
+  gap: 1rem;
   display: flex;
   flex-direction: column;
+}
+
+.error {
+  outline: 0.125rem solid red;
 }
