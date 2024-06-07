@@ -27,3 +27,15 @@ form {
 .error {
   outline: 0.125rem solid red;
 }
+
+.empty {
+  color: red;
+}
+
+.wrong-format {
+  color: red;
+}
+
+.valid {
+  display: none;
+}
