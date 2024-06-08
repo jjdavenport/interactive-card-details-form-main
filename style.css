@@ -39,3 +39,7 @@ form {
 .valid {
   display: none;
 }
+
+.missing {
+  color: red;
+}

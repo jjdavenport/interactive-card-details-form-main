@@ -8,7 +8,6 @@ const form = document.querySelector("form");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   const input = document.querySelectorAll(".input");
-  const submitBtn = document.getElementById("submit-button");
   input.forEach((i) => {
     if (i.value === "") {
       const empty = i.nextElementSibling;
@@ -21,6 +20,7 @@ form.addEventListener("submit", (e) => {
       }
     }
   });
+  validateForm();
 });
 
 nameInput.addEventListener("input", () => {
@@ -45,6 +45,7 @@ nameInput.addEventListener("input", () => {
 
 cardInput.addEventListener("input", () => {
   const regex = /^[\d\s]+$/;
+  const submitButton = document.getElementById("submit-button");
   let val = cardInput.value.replace(/\s/g, "").slice(0, 16);
   const regVal = val.replace(/(.{4})/g, "$1 ");
   cardInput.value = regVal.trim();
@@ -55,35 +56,46 @@ cardInput.addEventListener("input", () => {
   }
   if (!cardInput.value) {
     cardInput.classList.remove("error");
+    removeMissing(cardInput);
     removeWrongFormat(cardInput);
   } else if (!cardInput.value.match(regex)) {
     cardInput.classList.add("error");
     wrongFormatNum(cardInput);
   } else {
+    removeMissing(cardInput);
     removeWrongFormat(cardInput);
     cardInput.classList.remove("error");
   }
+  missingCardNum(cardInput);
 });
 
 monthInput.addEventListener("input", () => {
   const regex = /^\d+$/;
+  const monthRegex = /^(0[0-9]|1[0-2])$/;
   const monthOutput = document.getElementById("month-output");
+  const submitButton = document.getElementById("submit-button");
   monthInput.value = monthInput.value.slice(0, 2);
   monthOutput.innerText = monthInput.value + "/";
   const empty = monthInput.nextElementSibling;
   if (empty.classList.contains("empty")) {
     empty.remove();
   }
-  if (!monthInput.value) {
+  if (monthInput.value.length < 2) {
     removeWrongFormat(monthInput);
+    removeMissing(monthInput);
     monthInput.classList.remove("error");
   } else if (!monthInput.value.match(regex)) {
     monthInput.classList.add("error");
     wrongFormatNum(monthInput);
+  } else if (!monthInput.value.match(monthRegex)) {
+    monthInput.classList.add("error");
+    wrongFormatMonth(monthInput);
   } else {
     removeWrongFormat(monthInput);
+    removeMissing(monthInput);
     monthInput.classList.remove("error");
   }
+  missingMonthYear(monthInput);
 });
 
 yearInput.addEventListener("input", () => {
@@ -97,14 +109,17 @@ yearInput.addEventListener("input", () => {
   }
   if (!yearInput.value) {
     removeWrongFormat(yearInput);
+    removeMissing(yearInput);
     yearInput.classList.remove("error");
   } else if (!yearInput.value.match(regex)) {
     wrongFormatNum(yearInput);
     yearInput.classList.add("error");
   } else {
     removeWrongFormat(yearInput);
+    removeMissing(yearInput);
     yearInput.classList.remove("error");
   }
+  missingMonthYear(yearInput);
 });
 
 cvcInput.addEventListener("input", () => {
@@ -118,14 +133,17 @@ cvcInput.addEventListener("input", () => {
   }
   if (!cvcInput.value) {
     removeWrongFormat(cvcInput);
+    removeMissing(cvcInput);
     cvcInput.classList.remove("error");
   } else if (!cvcInput.value.match(regex)) {
     wrongFormatNum(cvcInput);
     cvcInput.classList.add("error");
   } else {
+    removeMissing(cvcInput);
     removeWrongFormat(cvcInput);
     cvcInput.classList.remove("error");
   }
+  missingCvc(cvcInput);
 });
 
 function wrongFormatLetter(i) {
@@ -148,9 +166,105 @@ function wrongFormatNum(i) {
   }
 }
 
+function wrongFormatMonth(i) {
+  const createSpan = i.nextElementSibling;
+  if (createSpan.classList.contains("wrong-format") < 1) {
+    const errorFormat = document.createElement("span");
+    errorFormat.innerText = "Wrong format, only 12 months in a year";
+    i.insertAdjacentElement("afterend", errorFormat);
+    errorFormat.className = "wrong-format";
+  }
+}
+
 function removeWrongFormat(i) {
   const wrongFormat = i.nextElementSibling;
   if (wrongFormat.classList.contains("wrong-format")) {
     wrongFormat.remove();
   }
 }
+
+function missingCardNum(i) {
+  const submitButton = document.getElementById("submit-button");
+  submitButton.addEventListener("click", () => {
+    const createSpan = i.nextElementSibling;
+    if (!createSpan.classList.contains("missing")) {
+      if (i.value.length < 19 && i.value.length > 0) {
+        wrongCardNum(i);
+      }
+    }
+  });
+}
+
+function missingMonthYear(i) {
+  const submitButton = document.getElementById("submit-button");
+  submitButton.addEventListener("click", () => {
+    const createSpan = i.nextElementSibling;
+    if (!createSpan.classList.contains("missing")) {
+      if (i.value.length === 1) {
+        wrongMonthYear(i);
+      }
+    }
+  });
+}
+
+function missingCvc(i) {
+  const submitButton = document.getElementById("submit-button");
+  submitButton.addEventListener("click", () => {
+    const createSpan = i.nextElementSibling;
+    if (!createSpan.classList.contains("missing")) {
+      if (i.value.length === 1 || i.value.length === 2) {
+        wrongCvc(i);
+      }
+    }
+  });
+}
+
+function removeMissing(i) {
+  const missing = i.nextElementSibling;
+  if (missing.classList.contains("missing")) {
+    missing.remove();
+  }
+}
+
+function validateForm() {
+  const formatCheck = document.querySelectorAll(".error");
+  if (formatCheck.length > 0) {
+    console.log("invalid");
+  } else {
+    console.log("valid");
+  }
+}
+
+function wrongCardNum(i) {
+  const createSpan = i.nextElementSibling;
+  if (createSpan.classList.contains("wrong-format") < 1) {
+    const errorFormat = document.createElement("span");
+    errorFormat.innerText = "16 Digits Required";
+    i.insertAdjacentElement("afterend", errorFormat);
+    errorFormat.className = "missing";
+    i.classList.add("error");
+  }
+}
+
+function wrongMonthYear(i) {
+  const createSpan = i.nextElementSibling;
+  if (createSpan.classList.contains("wrong-format") < 1) {
+    const errorFormat = document.createElement("span");
+    errorFormat.innerText = "2 Digits Required";
+    i.insertAdjacentElement("afterend", errorFormat);
+    errorFormat.className = "missing";
+    i.classList.add("error");
+  }
+}
+
+function wrongCvc(i) {
+  const createSpan = i.nextElementSibling;
+  if (createSpan.classList.contains("wrong-format") < 1) {
+    const errorFormat = document.createElement("span");
+    errorFormat.innerText = "3 Digits Required";
+    i.insertAdjacentElement("afterend", errorFormat);
+    errorFormat.className = "missing";
+    i.classList.add("error");
+  }
+}
+// no error state shown when month not filled same with card number
