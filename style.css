@@ -24,6 +24,12 @@ form {
   flex-direction: column;
 }
 
+.input {
+  border: none;
+  outline: 0.0625rem solid black;
+  border-radius: 0.125rem;
+}
+
 .error {
   outline: 0.125rem solid red;
 }

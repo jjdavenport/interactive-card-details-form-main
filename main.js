@@ -45,11 +45,12 @@ nameInput.addEventListener("input", () => {
 
 cardInput.addEventListener("input", () => {
   const regex = /^[\d\s]+$/;
-  const submitButton = document.getElementById("submit-button");
   let val = cardInput.value.replace(/\s/g, "").slice(0, 16);
   const regVal = val.replace(/(.{4})/g, "$1 ");
   cardInput.value = regVal.trim();
-  document.getElementById("card-output").innerText = regVal;
+  const spanVal = val.padEnd(16, "0");
+  const regexOutput = spanVal.replace(/(.{4})/g, "$1 ").trim();
+  document.getElementById("card-output").innerText = regexOutput;
   const empty = cardInput.nextElementSibling;
   if (empty.classList.contains("empty")) {
     empty.remove();
@@ -73,9 +74,10 @@ monthInput.addEventListener("input", () => {
   const regex = /^\d+$/;
   const monthRegex = /^(0[0-9]|1[0-2])$/;
   const monthOutput = document.getElementById("month-output");
-  const submitButton = document.getElementById("submit-button");
-  monthInput.value = monthInput.value.slice(0, 2);
-  monthOutput.innerText = monthInput.value + "/";
+  let val = monthInput.value.slice(0, 2);
+  const spanVal = val.padEnd(2, "0");
+  monthInput.value = val;
+  monthOutput.innerText = spanVal + "/";
   const empty = monthInput.nextElementSibling;
   if (empty.classList.contains("empty")) {
     empty.remove();
@@ -101,8 +103,10 @@ monthInput.addEventListener("input", () => {
 yearInput.addEventListener("input", () => {
   const regex = /^\d+$/;
   const yearOutput = document.getElementById("year-output");
-  yearInput.value = yearInput.value.slice(0, 2);
-  yearOutput.innerText = yearInput.value;
+  let val = yearInput.value.slice(0, 2);
+  const spanVal = val.padEnd(2, "0");
+  yearInput.value = val;
+  yearOutput.innerText = spanVal;
   const empty = yearInput.nextElementSibling;
   if (empty.classList.contains("empty")) {
     empty.remove();
@@ -125,8 +129,10 @@ yearInput.addEventListener("input", () => {
 cvcInput.addEventListener("input", () => {
   const regex = /^\d+$/;
   const cvcOutput = document.getElementById("cvc-output");
-  cvcInput.value = cvcInput.value.slice(0, 3);
-  cvcOutput.innerText = cvcInput.value;
+  let val = cvcInput.value.slice(0, 3);
+  const spanVal = val.padEnd(3, "0");
+  cvcInput.value = val;
+  cvcOutput.innerText = spanVal;
   const empty = cvcInput.nextElementSibling;
   if (empty.classList.contains("empty")) {
     empty.remove();
@@ -267,4 +273,3 @@ function wrongCvc(i) {
     i.classList.add("error");
   }
 }
-// no error state shown when month not filled same with card number
