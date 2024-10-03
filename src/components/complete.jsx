@@ -1,11 +1,13 @@
-const Complete = ({ data }) => {
+import icon from "./assets/icon-complete.svg";
+
+const Complete = ({}) => {
   return (
     <>
       <article className="flex flex-col p-4">
-        <img className="w-4" src={data.img} />
-        <span>{data.title}</span>
-        <span>{data.message}</span>
-        <button>{data.button_text}</button>
+        <img className="w-4" src={icon} />
+        <span>Thank you!</span>
+        <span>We've added your card details</span>
+        <button>Continue</button>
       </article>
     </>
   );

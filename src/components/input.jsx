@@ -1,38 +1,54 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Cleave from "cleave.js/react";
 
-const Input = ({ placeholder, type }) => {
-  const [input, setInput] = useState("");
+const Input = ({
+  options,
+  placeholder,
+  value,
+  onChange,
+  onError,
+  onSubmit,
+}) => {
   const [error, setError] = useState("");
 
   const validate = (val) => {
-    const regex = /^\d+$/;
+    const option = options || {};
     if (val === "") {
       setError("Can't be blank");
-    } else if (type === "number" && !val.match(regex)) {
-      setError("Wrong format,numbers only");
+      onError(error);
+    } else if (option.date && val.length < 2) {
+      setError("Full date");
+      onError(error);
+    } else if (option.creditCard && val.length < 19) {
+      setError("short card");
+      onError(error);
+    } else if (option.numeralPositiveOnly && val.length < 3) {
+      setError("Short CVC");
+      onError(true);
     } else {
       setError("");
+      onError(false);
     }
   };
 
-  const blur = () => {
-    validate(input);
-  };
+  useEffect(() => {
+    if (onSubmit) {
+      validate(value);
+    }
+  }, [onSubmit, value]);
 
-  const change = (e) => {
-    const val = e.target.value;
-    setInput(val);
-    validate(val);
+  const blur = () => {
+    validate(value);
   };
 
   return (
     <>
-      <input
-        type={type === "number" ? "text" : type}
+      <Cleave
         placeholder={placeholder}
-        value={input}
-        onChange={change}
+        value={value}
+        onChange={onChange}
         onBlur={blur}
+        options={options}
       />
       {error && <span>{error}</span>}
     </>
