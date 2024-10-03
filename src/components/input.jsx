@@ -8,6 +8,7 @@ const Input = ({
   onChange,
   onError,
   onSubmit,
+  type = "text",
 }) => {
   const [error, setError] = useState("");
 
@@ -41,6 +42,21 @@ const Input = ({
     validate(value);
   };
 
+  if (type === "text") {
+    return (
+      <>
+        <input
+          type="text"
+          placeholder={placeholder}
+          value={value}
+          onChange={onChange}
+          onBlur={blur}
+        />
+        {error && <span>{error}</span>}
+      </>
+    );
+  }
+
   return (
     <>
       <Cleave
@@ -48,7 +64,7 @@ const Input = ({
         value={value}
         onChange={onChange}
         onBlur={blur}
-        options={options}
+        options={options || {}}
       />
       {error && <span>{error}</span>}
     </>
