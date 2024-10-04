@@ -1,5 +1,5 @@
 import Cleave from "cleave.js/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Input = ({
   options,
@@ -8,6 +8,7 @@ const Input = ({
   onChange,
   onError,
   type = "text",
+  onBlur,
 }) => {
   const [error, setError] = useState("");
 
@@ -34,6 +35,12 @@ const Input = ({
   const blur = () => {
     validate(value);
   };
+
+  useEffect(() => {
+    if (onBlur) {
+      onBlur(blur);
+    }
+  }, [onBlur]);
 
   if (type === "text") {
     return (

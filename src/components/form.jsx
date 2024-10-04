@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Input from "./input";
 
 const Form = ({
@@ -19,7 +19,6 @@ const Form = ({
   const [monthError, setMonthError] = useState(true);
   const [yearError, setYearError] = useState(true);
   const [cvcError, setCvcError] = useState(true);
-  const [submitted, setSubmitted] = useState(false);
 
   const validateForm = () => {
     return (
@@ -31,9 +30,19 @@ const Form = ({
     );
   };
 
+  const cardHolderRef = useRef();
+  const cardNumberRef = useRef();
+  const monthRef = useRef();
+  const yearRef = useRef();
+  const cvcRef = useRef();
+
   const submit = (e) => {
     e.preventDefault();
-    setSubmitted(true);
+    cardHolderRef.current?.();
+    cardNumberRef.current?.();
+    monthRef.current?.();
+    yearRef.current?.();
+    cvcRef.current?.();
     if (validateForm()) {
       setValid(true);
     } else {
@@ -51,6 +60,7 @@ const Form = ({
           value={cardHolder}
           onChange={(e) => setCardHolder(e.target.value)}
           onError={(e) => setCardHolderError(e)}
+          onBlur={(blur) => (cardHolderRef.current = blur)}
         />
       </label>
       <label className="flex flex-col gap-2">
@@ -62,6 +72,7 @@ const Form = ({
           value={cardNumber}
           onChange={(e) => setCardNumber(e.target.value)}
           onError={(e) => setCardNumberError(e)}
+          onBlur={(blur) => (cardNumberRef.current = blur)}
         />
       </label>
       <div className="flex gap-4 w-full">
@@ -76,6 +87,7 @@ const Form = ({
                 value={month}
                 onChange={(e) => setMonth(e.target.value)}
                 onError={(e) => setMonthError(e)}
+                onBlur={(blur) => (monthRef.current = blur)}
               />
             </div>
             <div className="flex flex-col w-1/2">
@@ -86,6 +98,7 @@ const Form = ({
                 value={year}
                 onChange={(e) => setYear(e.target.value)}
                 onError={(e) => setYearError(e)}
+                onBlur={(blur) => (yearRef.current = blur)}
               />
             </div>
           </div>
@@ -103,6 +116,7 @@ const Form = ({
             placeholder={"e.g. 123"}
             onChange={(e) => setCvc(e.target.value)}
             onError={(e) => setCvcError(e)}
+            onBlur={(blur) => (cvcRef.current = blur)}
           />
         </label>
       </div>
