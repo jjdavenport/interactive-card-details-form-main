@@ -10,32 +10,46 @@ function App() {
   const [month, setMonth] = useState("");
   const [year, setYear] = useState("");
   const [cvc, setCvc] = useState("");
+
+  const reset = () => {
+    setCardHolder("");
+    setCardNumber("");
+    setMonth("");
+    setYear("");
+    setCvc("");
+    setValid(false);
+  };
+
   return (
     <>
-      <Card
-        cardHolder={cardHolder}
-        cardNumber={cardNumber}
-        month={month}
-        year={year}
-        cvc={cvc}
-      />
-      {valid ? (
-        <Complete />
-      ) : (
-        <Form
-          year={year}
-          month={month}
-          cardHolder={cardHolder}
-          cardNumber={cardNumber}
-          cvc={cvc}
-          setCardNumber={setCardNumber}
-          setYear={setYear}
-          setMonth={setMonth}
-          setCardHolder={setCardHolder}
-          setValid={setValid}
-          setCvc={setCvc}
-        />
-      )}
+      <div className="font-custom">
+        <main>
+          <Card
+            cardHolder={cardHolder}
+            cardNumber={cardNumber}
+            month={month}
+            year={year}
+            cvc={cvc}
+          />
+          {valid ? (
+            <Complete onClick={reset} />
+          ) : (
+            <Form
+              year={year}
+              month={month}
+              cardHolder={cardHolder}
+              cardNumber={cardNumber}
+              cvc={cvc}
+              setCardNumber={setCardNumber}
+              setYear={setYear}
+              setMonth={setMonth}
+              setCardHolder={setCardHolder}
+              setValid={setValid}
+              setCvc={setCvc}
+            />
+          )}
+        </main>
+      </div>
     </>
   );
 }

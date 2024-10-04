@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
 import Cleave from "cleave.js/react";
+import { useState } from "react";
 
 const Input = ({
   options,
@@ -7,7 +7,6 @@ const Input = ({
   value,
   onChange,
   onError,
-  onSubmit,
   type = "text",
 }) => {
   const [error, setError] = useState("");
@@ -16,13 +15,13 @@ const Input = ({
     const option = options || {};
     if (val === "") {
       setError("Can't be blank");
-      onError(error);
+      onError(true);
     } else if (option.date && val.length < 2) {
       setError("Full date");
-      onError(error);
+      onError(true);
     } else if (option.creditCard && val.length < 19) {
       setError("short card");
-      onError(error);
+      onError(true);
     } else if (option.numeralPositiveOnly && val.length < 3) {
       setError("Short CVC");
       onError(true);
@@ -32,12 +31,6 @@ const Input = ({
     }
   };
 
-  useEffect(() => {
-    if (onSubmit) {
-      validate(value);
-    }
-  }, [onSubmit, value]);
-
   const blur = () => {
     validate(value);
   };
@@ -46,13 +39,16 @@ const Input = ({
     return (
       <>
         <input
+          className={`${
+            error ? "" : ""
+          } outline p-1 flex w-full outline-1 rounded-md`}
           type="text"
           placeholder={placeholder}
           value={value}
           onChange={onChange}
           onBlur={blur}
         />
-        {error && <span>{error}</span>}
+        {error && <span className="normal-case">{error}</span>}
       </>
     );
   }
@@ -60,13 +56,16 @@ const Input = ({
   return (
     <>
       <Cleave
+        className={`${
+          error ? "" : ""
+        } outline p-1 w-full flex outline-1 rounded-md`}
         placeholder={placeholder}
         value={value}
         onChange={onChange}
         onBlur={blur}
-        options={options || {}}
+        options={options}
       />
-      {error && <span>{error}</span>}
+      {error && <span className="normal-case">{error}</span>}
     </>
   );
 };
