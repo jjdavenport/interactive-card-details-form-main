@@ -51,8 +51,8 @@ const Form = ({
   };
 
   return (
-    <form noValidate onSubmit={submit} className="flex flex-col gap-4 p-4">
-      <label className="flex flex-col gap-2">
+    <form noValidate onSubmit={submit} className="flex flex-col gap-8 p-4">
+      <label className="flex flex-col gap-1">
         Cardholder Name
         <Input
           type={"text"}
@@ -63,10 +63,10 @@ const Form = ({
           onBlur={(blur) => (cardHolderRef.current = blur)}
         />
       </label>
-      <label className="flex flex-col gap-2">
+      <label className="flex flex-col gap-1">
         Card Number
         <Input
-          options={{ creditCard: true, visa: true }}
+          options={{ blocks: [4, 4, 4, 4], delimiter: " ", numericOnly: true }}
           type={"number"}
           placeholder={"e.g. 1234 5678 9123 0000"}
           value={cardNumber}
@@ -75,11 +75,11 @@ const Form = ({
           onBlur={(blur) => (cardNumberRef.current = blur)}
         />
       </label>
-      <div className="flex gap-4 w-full">
-        <label className="flex flex-col  uppercase w-1/2">
+      <div className="flex gap-4 items-center w-full">
+        <label className="flex flex-col gap-1 uppercase w-1/2">
           Exp. date (MM/YY)
           <div className="flex gap-2">
-            <div className="flex flex-col w-1/2">
+            <div className="flex flex-col  w-1/2">
               <Input
                 options={{ date: true, datePattern: ["m"] }}
                 type={"number"}
@@ -120,7 +120,12 @@ const Form = ({
           />
         </label>
       </div>
-      <button type="submit">Confirm</button>
+      <button
+        className="text-white bg-veryDarkViolet rounded-lg p-3"
+        type="submit"
+      >
+        Confirm
+      </button>
     </form>
   );
 };

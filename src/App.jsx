@@ -1,6 +1,7 @@
 import Card from "./components/card";
 import Form from "./components/form";
 import Complete from "./components/complete";
+import Footer from "./components/footer";
 import { useState } from "react";
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
 
   return (
     <>
-      <div className="font-custom">
+      <div className="font-custom font-medium text-lg text-veryDarkViolet">
         <main>
           <Card
             cardHolder={cardHolder}
@@ -49,6 +50,7 @@ function App() {
             />
           )}
         </main>
+        <Footer />
       </div>
     </>
   );

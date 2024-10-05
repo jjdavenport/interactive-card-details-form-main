@@ -47,15 +47,23 @@ const Input = ({
       <>
         <input
           className={`${
-            error ? "" : ""
-          } outline p-1 flex w-full outline-1 rounded-md`}
+            error
+              ? "outline-red-600"
+              : "outline-darkGrayishViolet hover:outline-veryDarkViolet focus:outline-veryDarkViolet"
+          } outline p-2 flex w-full outline-1 cursor-pointer  rounded-md transform ease-in-out duration-300 placeholder:text-lightGrayishViolet`}
           type="text"
           placeholder={placeholder}
           value={value}
           onChange={onChange}
           onBlur={blur}
         />
-        {error && <span className="normal-case">{error}</span>}
+        <div className="h-1">
+          {error && (
+            <span className="normal-case transform text-sm ease-in-out duration-300 text-red-600">
+              {error}
+            </span>
+          )}
+        </div>
       </>
     );
   }
@@ -64,15 +72,23 @@ const Input = ({
     <>
       <Cleave
         className={`${
-          error ? "" : ""
-        } outline p-1 w-full flex outline-1 rounded-md`}
+          error
+            ? "outline-red-600"
+            : "outline-darkGrayishViolet hover:outline-veryDarkViolet focus:outline-veryDarkViolet"
+        } outline p-2 flex w-full outline-1 cursor-pointer  rounded-md transform ease-in-out duration-300 placeholder:text-lightGrayishViolet`}
         placeholder={placeholder}
         value={value}
         onChange={onChange}
         onBlur={blur}
-        options={options}
+        options={options || {}}
       />
-      {error && <span className="normal-case">{error}</span>}
+      <div className="h-1">
+        {error && (
+          <span className="normal-case transform ease-in-out duration-300 text-sm text-red-600">
+            {error}
+          </span>
+        )}
+      </div>
     </>
   );
 };
