@@ -20,7 +20,7 @@ const Input = ({
     } else if (option.date && val.length < 2) {
       setError("Full date");
       onError(true);
-    } else if (option.creditCard && val.length < 19) {
+    } else if (option.delimiter && val.length < 19) {
       setError("short card");
       onError(true);
     } else if (option.numeralPositiveOnly && val.length < 3) {
@@ -50,7 +50,7 @@ const Input = ({
             error
               ? "outline-red-600"
               : "outline-darkGrayishViolet hover:outline-veryDarkViolet focus:outline-veryDarkViolet"
-          } outline p-2 flex w-full outline-1 cursor-pointer  rounded-md transform ease-in-out duration-300 placeholder:text-lightGrayishViolet`}
+          } flex w-full transform cursor-pointer rounded-md p-2 text-lg outline outline-1 duration-300 ease-in-out placeholder:text-lightGrayishViolet`}
           type="text"
           placeholder={placeholder}
           value={value}
@@ -59,7 +59,7 @@ const Input = ({
         />
         <div className="h-1">
           {error && (
-            <span className="normal-case transform text-sm ease-in-out duration-300 text-red-600">
+            <span className="transform text-sm normal-case text-red-600 duration-300 ease-in-out">
               {error}
             </span>
           )}
@@ -75,7 +75,7 @@ const Input = ({
           error
             ? "outline-red-600"
             : "outline-darkGrayishViolet hover:outline-veryDarkViolet focus:outline-veryDarkViolet"
-        } outline p-2 flex w-full outline-1 cursor-pointer  rounded-md transform ease-in-out duration-300 placeholder:text-lightGrayishViolet`}
+        } flex w-full transform cursor-pointer rounded-md p-2 text-lg tracking-widest outline outline-1 duration-300 ease-in-out placeholder:text-lightGrayishViolet`}
         placeholder={placeholder}
         value={value}
         onChange={onChange}
@@ -84,7 +84,7 @@ const Input = ({
       />
       <div className="h-1">
         {error && (
-          <span className="normal-case transform ease-in-out duration-300 text-sm text-red-600">
+          <span className="transform text-sm normal-case text-red-600 duration-300 ease-in-out">
             {error}
           </span>
         )}

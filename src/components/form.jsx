@@ -51,8 +51,12 @@ const Form = ({
   };
 
   return (
-    <form noValidate onSubmit={submit} className="flex flex-col gap-8 p-4">
-      <label className="flex flex-col gap-1">
+    <form
+      noValidate
+      onSubmit={submit}
+      className="flex flex-1 flex-col gap-8 p-4 py-20"
+    >
+      <label className="flex flex-col gap-1 text-sm uppercase">
         Cardholder Name
         <Input
           type={"text"}
@@ -63,7 +67,7 @@ const Form = ({
           onBlur={(blur) => (cardHolderRef.current = blur)}
         />
       </label>
-      <label className="flex flex-col gap-1">
+      <label className="flex flex-col gap-1 text-sm uppercase">
         Card Number
         <Input
           options={{ blocks: [4, 4, 4, 4], delimiter: " ", numericOnly: true }}
@@ -75,11 +79,11 @@ const Form = ({
           onBlur={(blur) => (cardNumberRef.current = blur)}
         />
       </label>
-      <div className="flex gap-4 items-center w-full">
-        <label className="flex flex-col gap-1 uppercase w-1/2">
+      <div className="flex w-full items-center gap-2">
+        <label className="flex w-1/2 flex-col gap-1 text-sm uppercase">
           Exp. date (MM/YY)
           <div className="flex gap-2">
-            <div className="flex flex-col  w-1/2">
+            <div className="flex w-1/2 flex-col">
               <Input
                 options={{ date: true, datePattern: ["m"] }}
                 type={"number"}
@@ -90,7 +94,7 @@ const Form = ({
                 onBlur={(blur) => (monthRef.current = blur)}
               />
             </div>
-            <div className="flex flex-col w-1/2">
+            <div className="flex w-1/2 flex-col">
               <Input
                 options={{ date: true, datePattern: ["y"] }}
                 type={"number"}
@@ -103,7 +107,7 @@ const Form = ({
             </div>
           </div>
         </label>
-        <label className="flex flex-col w-1/2">
+        <label className="flex w-1/2 flex-col text-sm">
           CVC
           <Input
             options={{
@@ -121,7 +125,7 @@ const Form = ({
         </label>
       </div>
       <button
-        className="text-white bg-veryDarkViolet rounded-lg p-3"
+        className="rounded-lg bg-veryDarkViolet p-3 text-white"
         type="submit"
       >
         Confirm

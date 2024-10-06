@@ -23,8 +23,8 @@ function App() {
 
   return (
     <>
-      <div className="font-custom font-medium text-lg text-veryDarkViolet">
-        <main>
+      <div className="flex h-full min-h-screen flex-col font-custom text-lg font-medium text-veryDarkViolet">
+        <main className="flex flex-1 flex-col">
           <Card
             cardHolder={cardHolder}
             cardNumber={cardNumber}
