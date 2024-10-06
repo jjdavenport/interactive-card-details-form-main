@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import Input from "./input";
+import InputMonthYear from "./input-month-year";
 
 const Form = ({
   month,
@@ -82,30 +83,21 @@ const Form = ({
       <div className="flex w-full items-center gap-2">
         <label className="flex w-1/2 flex-col gap-1 text-sm uppercase">
           Exp. date (MM/YY)
-          <div className="flex gap-2">
-            <div className="flex w-1/2 flex-col">
-              <Input
-                options={{ date: true, datePattern: ["m"] }}
-                type={"number"}
-                placeholder={"MM"}
-                value={month}
-                onChange={(e) => setMonth(e.target.value)}
-                onError={(e) => setMonthError(e)}
-                onBlur={(blur) => (monthRef.current = blur)}
-              />
-            </div>
-            <div className="flex w-1/2 flex-col">
-              <Input
-                options={{ date: true, datePattern: ["y"] }}
-                type={"number"}
-                placeholder={"YY"}
-                value={year}
-                onChange={(e) => setYear(e.target.value)}
-                onError={(e) => setYearError(e)}
-                onBlur={(blur) => (yearRef.current = blur)}
-              />
-            </div>
-          </div>
+          <InputMonthYear
+            value={{ month, year }}
+            onChange={({ month, year }) => {
+              setMonth(month);
+              setYear(year);
+            }}
+            onError={({ monthError, yearError }) => {
+              setMonthError(monthError);
+              setYearError(yearError);
+            }}
+            onBlur={(blurFunctions) => {
+              monthRef.current = blurFunctions.MM;
+              yearRef.current = blurFunctions.YY;
+            }}
+          />
         </label>
         <label className="flex w-1/2 flex-col text-sm">
           CVC

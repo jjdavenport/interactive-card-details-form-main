@@ -3,16 +3,16 @@ import icon from "./assets/icon-complete.svg";
 const Complete = ({ onClick }) => {
   return (
     <>
-      <article className="flex flex-col gap-10 items-center p-4 text-center">
+      <article className="flex flex-col items-center gap-10 p-4 py-20 text-center">
         <img className="w-1/6" src={icon} />
         <div className="flex flex-col gap-4">
-          <span className="uppercase text-3xl tracking-wide">Thank you!</span>
+          <span className="text-3xl uppercase tracking-wide">Thank you!</span>
           <span className="text-darkGrayishViolet">
             We've added your card details
           </span>
         </div>
         <button
-          className="text-white bg-veryDarkViolet w-full p-4 rounded-lg"
+          className="w-full rounded-lg bg-veryDarkViolet p-4 text-white"
           onClick={onClick}
         >
           Continue
