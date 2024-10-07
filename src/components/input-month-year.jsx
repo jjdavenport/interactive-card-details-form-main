@@ -59,8 +59,8 @@ const InputMonthYear = ({ value, onChange, onError, onBlur }) => {
           className={`${
             monthError
               ? "outline-red-600"
-              : "outline-darkGrayishViolet hover:outline-veryDarkViolet focus:outline-veryDarkViolet"
-          } flex w-full transform cursor-pointer rounded-md p-2 text-lg tracking-widest outline outline-1 duration-300 ease-in-out placeholder:text-lightGrayishViolet`}
+              : "outline-lightGrayishViolet hover:outline-veryDarkViolet focus:outline-veryDarkViolet"
+          } flex w-full transform cursor-pointer rounded-md p-2 text-lg tracking-widest outline outline-1 duration-300 ease-in-out placeholder:pl-2 placeholder:text-lightGrayishViolet`}
           placeholder="MM"
           value={value.month}
           onChange={(e) => {
@@ -73,8 +73,8 @@ const InputMonthYear = ({ value, onChange, onError, onBlur }) => {
           className={`${
             yearError
               ? "outline-red-600"
-              : "outline-darkGrayishViolet hover:outline-veryDarkViolet focus:outline-veryDarkViolet"
-          } flex w-full transform cursor-pointer rounded-md p-2 text-lg tracking-widest outline outline-1 duration-300 ease-in-out placeholder:text-lightGrayishViolet`}
+              : "outline-lightGrayishViolet hover:outline-veryDarkViolet focus:outline-veryDarkViolet"
+          } flex w-full transform cursor-pointer rounded-md p-2 text-lg tracking-widest outline outline-1 duration-300 ease-in-out placeholder:pl-2 placeholder:text-lightGrayishViolet`}
           placeholder="YY"
           value={value.year}
           onChange={(e) => {

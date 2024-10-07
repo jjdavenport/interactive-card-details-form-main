@@ -38,14 +38,14 @@ function App() {
             />
             {valid ? (
               <>
-                <section className="flex w-full flex-col items-center justify-center ~md/2xl:~pl-16/0">
+                <section className="flex w-full flex-col items-center justify-center ~md/2xl:~pl-24/0">
                   <Complete onClick={reset} />
                   <Footer />
                 </section>
               </>
             ) : (
               <>
-                <section className="flex w-full flex-col items-center justify-center ~md/2xl:~pl-16/0">
+                <section className="flex w-full flex-col items-center justify-center ~md/2xl:~pl-24/0">
                   <Form
                     year={year}
                     month={month}

@@ -49,8 +49,8 @@ const Input = ({
           className={`${
             error
               ? "outline-red-600"
-              : "outline-darkGrayishViolet hover:outline-veryDarkViolet focus:outline-veryDarkViolet"
-          } flex w-full transform cursor-pointer rounded-md p-2 text-lg outline outline-1 duration-300 ease-in-out placeholder:text-lightGrayishViolet`}
+              : "outline-lightGrayishViolet hover:outline-veryDarkViolet focus:outline-veryDarkViolet"
+          } flex w-full transform cursor-pointer rounded-md p-2 text-lg outline outline-1 duration-300 ease-in-out placeholder:pl-2 placeholder:text-lightGrayishViolet`}
           type="text"
           placeholder={placeholder}
           value={value}
@@ -74,8 +74,8 @@ const Input = ({
         className={`${
           error
             ? "outline-red-600"
-            : "outline-darkGrayishViolet hover:outline-veryDarkViolet focus:outline-veryDarkViolet"
-        } flex w-full transform cursor-pointer rounded-md p-2 text-lg tracking-widest outline outline-1 duration-300 ease-in-out placeholder:text-lightGrayishViolet`}
+            : "outline-lightGrayishViolet hover:outline-veryDarkViolet focus:outline-veryDarkViolet"
+        } flex w-full transform cursor-pointer rounded-md p-2 text-lg tracking-widest outline outline-1 duration-300 ease-in-out placeholder:pl-2 placeholder:text-lightGrayishViolet`}
         placeholder={placeholder}
         value={value}
         onChange={onChange}
