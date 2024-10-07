@@ -13,8 +13,8 @@ export default {
         custom: ["space grotesk", "sans-serif"],
       },
       backgroundImage: {
-        cardDesktop: "url('./src/components/assets/bg-main-desktop.png')",
-        cardMobile: "url('./src/components/assets/bg-main-mobile.png')",
+        cardDesktop: "url('../src/components/assets/bg-main-desktop.png')",
+        cardMobile: "url('../src/components/assets/bg-main-mobile.png')",
       },
       colors: {
         white: "hsl(0, 0%, 100%)",

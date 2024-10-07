@@ -21,10 +21,10 @@ const Input = ({
       setError("Full date");
       onError(true);
     } else if (option.delimiter && val.length < 19) {
-      setError("short card");
+      setError("Must be 16 digits");
       onError(true);
     } else if (option.numeralPositiveOnly && val.length < 3) {
-      setError("Short CVC");
+      setError("Must be 3 Digits");
       onError(true);
     } else {
       setError("");

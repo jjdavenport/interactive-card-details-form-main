@@ -6,18 +6,31 @@ const InputMonthYear = ({ value, onChange, onError, onBlur }) => {
   const [yearError, setYearError] = useState("");
 
   const validate = (val, type) => {
-    if (val === "") {
-      if (type === "MM") {
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear() % 100;
+    const currentMonth = currentDate.getMonth() + 1;
+
+    if (type === "MM") {
+      if (val === "") {
         setMonthError("Can't be blank");
         onError({ monthError: true, yearError: yearError !== "" });
+      } else if (
+        parseInt(value.year) === currentYear &&
+        parseInt(val) < currentMonth
+      ) {
+        setMonthError("Can't be in the past");
+        onError({ monthError: true, yearError: yearError !== "" });
       } else {
-        setYearError("Can't be blank");
-        onError({ monthError: monthError !== "", yearError: true });
-      }
-    } else {
-      if (type === "MM") {
         setMonthError("");
         onError({ monthError: false, yearError: yearError !== "" });
+      }
+    } else if (type === "YY") {
+      if (val === "") {
+        setYearError("Can't be blank");
+        onError({ monthError: monthError !== "", yearError: true });
+      } else if (parseInt(val) < currentYear) {
+        setYearError("Can't be in the past");
+        onError({ monthError: monthError !== "", yearError: true });
       } else {
         setYearError("");
         onError({ monthError: monthError !== "", yearError: false });

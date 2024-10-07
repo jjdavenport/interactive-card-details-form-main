@@ -3,7 +3,7 @@ import icon from "./assets/icon-complete.svg";
 const Complete = ({ onClick }) => {
   return (
     <>
-      <article className="flex flex-col items-center gap-10 p-4 py-20 text-center md:w-3/5 md:flex-1 md:justify-center">
+      <article className="flex flex-col items-center gap-10 p-4 py-20 text-center md:w-6/12 md:max-w-lg md:flex-1 md:justify-center">
         <img className="w-1/6" src={icon} />
         <div className="flex flex-col gap-4">
           <span className="text-3xl uppercase tracking-wide">Thank you!</span>
