@@ -33,23 +33,23 @@ const CardDesktop = ({ cardHolder, cardNumber, month, year, cvc }) => {
   return (
     <>
       <section className="relative flex flex-col gap-2 bg-cardMobile bg-cover bg-no-repeat text-white md:w-6/12 md:bg-cardDesktop">
-        <div className="relative flex h-56 flex-1 flex-col gap-8">
+        <div className="relative flex flex-1 flex-col">
           <div className="absolute top-2/4 w-96 ~lg/2xl:~left-1/[20rem]">
             <img className="top-cardBack absolute right-0" src={cardBack} />
-            <span className="absolute right-10 top-[5.5rem] z-20">
+            <span className="absolute right-12 top-[5.75rem] z-10 text-sm tracking-widest">
               {defaultCvc()}
             </span>
           </div>
           <div className="absolute top-1/4 ~lg/2xl:~left-1/[14rem] md:w-96">
             <img className="absolute left-6 top-6 z-20 w-20" src={logo} />
             <img className="absolute z-10" src={cardFront} />
-            <span className="absolute left-6 top-28 z-20 text-xl tracking-widest">
+            <span className="absolute left-6 top-28 z-20 text-2xl tracking-widest">
               {defaultCardNumber()}
             </span>
-            <span className="absolute left-6 top-40 z-20 text-sm uppercase">
+            <span className="absolute left-6 top-40 z-20 text-sm uppercase tracking-widest">
               {defaultCardHolder()}
             </span>
-            <span className="absolute left-72 top-40 z-20 text-sm text-white">
+            <span className="absolute left-[19rem] top-40 z-20 text-sm tracking-widest text-white">
               {defaultMonth()}/{defaultYear()}
             </span>
           </div>

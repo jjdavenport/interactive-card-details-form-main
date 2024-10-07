@@ -28,7 +28,7 @@ function App() {
     return (
       <>
         <div className="flex h-full min-h-screen flex-col font-custom text-lg font-medium text-veryDarkViolet">
-          <main className="flex w-full flex-1 flex-col md:flex-row">
+          <main className="flex min-h-[55rem] w-full flex-1 flex-col md:flex-row">
             <CardDesktop
               cardHolder={cardHolder}
               cardNumber={cardNumber}
