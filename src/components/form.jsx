@@ -80,7 +80,7 @@ const Form = ({
           onBlur={(blur) => (cardNumberRef.current = blur)}
         />
       </label>
-      <div className="flex w-full items-center gap-2">
+      <div className="flex w-full items-center gap-4">
         <label className="flex w-1/2 flex-col gap-1 text-sm uppercase">
           <span className="tracking-widest">Exp. date (MM/YY)</span>
           <InputMonthYear
