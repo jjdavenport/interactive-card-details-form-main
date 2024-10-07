@@ -38,7 +38,7 @@ function App() {
             />
             {valid ? (
               <>
-                <section className="flex w-full flex-col items-center justify-center">
+                <section className="flex w-full flex-col items-center justify-center ~md/2xl:~pl-16/0">
                   <Complete onClick={reset} />
                   <Footer />
                 </section>
