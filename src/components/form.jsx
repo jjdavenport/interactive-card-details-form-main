@@ -55,9 +55,9 @@ const Form = ({
     <form
       noValidate
       onSubmit={submit}
-      className="flex flex-1 flex-col gap-8 p-4 py-20"
+      className="flex flex-1 flex-col gap-8 p-4 py-20 md:w-6/12 md:min-w-72 md:max-w-lg md:justify-center md:p-0"
     >
-      <label className="flex flex-col gap-1 text-sm uppercase">
+      <label className="flex flex-col gap-2 text-sm uppercase">
         Cardholder Name
         <Input
           type={"text"}
@@ -68,7 +68,7 @@ const Form = ({
           onBlur={(blur) => (cardHolderRef.current = blur)}
         />
       </label>
-      <label className="flex flex-col gap-1 text-sm uppercase">
+      <label className="flex flex-col gap-2 text-sm uppercase">
         Card Number
         <Input
           options={{ blocks: [4, 4, 4, 4], delimiter: " ", numericOnly: true }}
@@ -99,7 +99,7 @@ const Form = ({
             }}
           />
         </label>
-        <label className="flex w-1/2 flex-col text-sm">
+        <label className="flex w-1/2 flex-col gap-1 text-sm">
           CVC
           <Input
             options={{

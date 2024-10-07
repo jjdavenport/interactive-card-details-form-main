@@ -2,7 +2,7 @@ import logo from "./assets/card-logo.svg";
 import cardFront from "./assets/bg-card-front.png";
 import cardBack from "./assets/bg-card-back.png";
 
-const Card = ({ cardHolder, cardNumber, month, year, cvc }) => {
+const CardMobile = ({ cardHolder, cardNumber, month, year, cvc }) => {
   const defaultCardHolder = () => {
     if (!cardHolder) return "JANE APPLESEED";
     return cardHolder;
@@ -62,4 +62,4 @@ const Card = ({ cardHolder, cardNumber, month, year, cvc }) => {
   );
 };
 
-export default Card;
+export default CardMobile;
