@@ -1,10 +1,9 @@
-import CardMobile from "./components/card-mobile";
+import Card from "./components/card";
 import Form from "./components/form";
 import Complete from "./components/complete";
 import Footer from "./components/footer";
 import { useState } from "react";
 import { useMediaQuery } from "react-responsive";
-import CardDesktop from "./components/card-desktop";
 
 function App() {
   const desktop = useMediaQuery({ minWidth: 768 });
@@ -29,7 +28,8 @@ function App() {
       <>
         <div className="flex h-full min-h-screen flex-col font-custom text-lg font-medium text-veryDarkViolet">
           <main className="flex min-h-[55rem] w-full flex-1 flex-col md:flex-row">
-            <CardDesktop
+            <Card
+              desktop={desktop}
               cardHolder={cardHolder}
               cardNumber={cardNumber}
               month={month}
@@ -73,7 +73,8 @@ function App() {
     <>
       <div className="flex h-full min-h-screen flex-col font-custom text-lg font-medium text-veryDarkViolet">
         <main className="flex flex-1 flex-col md:flex-row">
-          <CardMobile
+          <Card
+            desktop={desktop}
             cardHolder={cardHolder}
             cardNumber={cardNumber}
             month={month}
