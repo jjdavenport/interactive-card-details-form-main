@@ -45,21 +45,23 @@ const Input = ({
   if (type === "text") {
     return (
       <>
-        <input
-          className={`${
-            error
-              ? "outline-red-600"
-              : "outline-lightGrayishViolet hover:outline-veryDarkViolet focus:outline-veryDarkViolet"
-          } flex w-full transform cursor-pointer rounded-md p-2 text-lg outline outline-1 duration-300 ease-in-out placeholder:pl-2 placeholder:text-lightGrayishViolet`}
-          type="text"
-          placeholder={placeholder}
-          value={value}
-          onChange={onChange}
-          onBlur={blur}
-        />
+        <div
+          className={`${error ? "bg-errorRed" : "bg-lightGrayishViolet focus-within:bg-gradient-to-r hover:bg-gradient-to-r"} group rounded-md from-gradientStart to-gradientEnd p-[1px] transition-all duration-300 ease-in-out`}
+        >
+          <div className="rounded-md bg-white">
+            <input
+              className="flex w-full cursor-pointer rounded-md p-2 text-lg outline-none duration-300 ease-in-out placeholder:text-lightGrayishViolet md:pl-4"
+              type="text"
+              placeholder={placeholder}
+              value={value}
+              onChange={onChange}
+              onBlur={blur}
+            />
+          </div>
+        </div>
         <div className="h-1">
           {error && (
-            <span className="transform text-sm normal-case text-red-600 duration-300 ease-in-out">
+            <span className="transform text-sm normal-case text-errorRed duration-300 ease-in-out">
               {error}
             </span>
           )}
@@ -70,21 +72,23 @@ const Input = ({
 
   return (
     <>
-      <Cleave
-        className={`${
-          error
-            ? "outline-red-600"
-            : "outline-lightGrayishViolet hover:outline-veryDarkViolet focus:outline-veryDarkViolet"
-        } flex w-full transform cursor-pointer rounded-md p-2 text-lg tracking-widest outline outline-1 duration-300 ease-in-out placeholder:pl-2 placeholder:text-lightGrayishViolet`}
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-        onBlur={blur}
-        options={options || {}}
-      />
+      <div
+        className={`${error ? "bg-errorRed" : "bg-lightGrayishViolet focus-within:bg-gradient-to-r hover:bg-gradient-to-r"} group rounded-md from-gradientStart to-gradientEnd p-[1px] transition-all duration-300 ease-in-out`}
+      >
+        <div className="rounded-md bg-white">
+          <Cleave
+            className="flex w-full cursor-pointer rounded-md p-2 text-lg outline-none duration-300 ease-in-out placeholder:text-lightGrayishViolet md:pl-4"
+            placeholder={placeholder}
+            value={value}
+            onChange={onChange}
+            onBlur={blur}
+            options={options || {}}
+          />
+        </div>
+      </div>
       <div className="h-1">
         {error && (
-          <span className="transform text-sm normal-case text-red-600 duration-300 ease-in-out">
+          <span className="transform text-sm normal-case text-errorRed duration-300 ease-in-out">
             {error}
           </span>
         )}

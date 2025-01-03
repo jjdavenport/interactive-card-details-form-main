@@ -55,43 +55,47 @@ const InputMonthYear = ({ value, onChange, onError, onBlur }) => {
   return (
     <>
       <div className="flex gap-4">
-        <Cleave
-          className={`${
-            monthError
-              ? "outline-red-600"
-              : "outline-lightGrayishViolet hover:outline-veryDarkViolet focus:outline-veryDarkViolet"
-          } flex w-full transform cursor-pointer rounded-md p-2 text-lg tracking-widest outline outline-1 duration-300 ease-in-out placeholder:pl-2 placeholder:text-lightGrayishViolet`}
-          placeholder="MM"
-          value={value.month}
-          onChange={(e) => {
-            onChange({ month: e.target.value, year: value.year });
-          }}
-          onBlur={() => blur("MM")}
-          options={{ date: true, datePattern: ["m"] }}
-        />
-        <Cleave
-          className={`${
-            yearError
-              ? "outline-red-600"
-              : "outline-lightGrayishViolet hover:outline-veryDarkViolet focus:outline-veryDarkViolet"
-          } flex w-full transform cursor-pointer rounded-md p-2 text-lg tracking-widest outline outline-1 duration-300 ease-in-out placeholder:pl-2 placeholder:text-lightGrayishViolet`}
-          placeholder="YY"
-          value={value.year}
-          onChange={(e) => {
-            onChange({ month: value.month, year: e.target.value });
-          }}
-          onBlur={() => blur("YY")}
-          options={{ date: true, datePattern: ["y"] }}
-        />
+        <div
+          className={`${monthError ? "bg-errorRed" : "bg-lightGrayishViolet focus-within:bg-gradient-to-r hover:bg-gradient-to-r"} group flex-1 rounded-md from-gradientStart to-gradientEnd p-[1px] transition-all duration-300 ease-in-out`}
+        >
+          <div className="rounded-md bg-white">
+            <Cleave
+              className="flex w-full cursor-pointer rounded-md p-2 text-lg outline-none duration-300 ease-in-out placeholder:text-lightGrayishViolet md:pl-4"
+              placeholder="MM"
+              value={value.month}
+              onChange={(e) => {
+                onChange({ month: e.target.value, year: value.year });
+              }}
+              onBlur={() => blur("MM")}
+              options={{ date: true, datePattern: ["m"] }}
+            />
+          </div>
+        </div>
+        <div
+          className={`${yearError ? "bg-errorRed" : "bg-lightGrayishViolet focus-within:bg-gradient-to-r hover:bg-gradient-to-r"} group flex-1 rounded-md from-gradientStart to-gradientEnd p-[1px] transition-all duration-300 ease-in-out`}
+        >
+          <div className="rounded-md bg-white">
+            <Cleave
+              className="flex w-full cursor-pointer rounded-md p-2 text-lg outline-none duration-300 ease-in-out placeholder:text-lightGrayishViolet md:pl-4"
+              placeholder="YY"
+              value={value.year}
+              onChange={(e) => {
+                onChange({ month: value.month, year: e.target.value });
+              }}
+              onBlur={() => blur("YY")}
+              options={{ date: true, datePattern: ["y"] }}
+            />
+          </div>
+        </div>
       </div>
       <div className="h-1">
         {monthError && (
-          <span className="transform text-sm normal-case text-red-600 duration-300 ease-in-out">
+          <span className="transform text-sm normal-case text-errorRed duration-300 ease-in-out">
             {monthError}
           </span>
         )}
         {!monthError && yearError && (
-          <span className="transform text-sm normal-case text-red-600 duration-300 ease-in-out">
+          <span className="transform text-sm normal-case text-errorRed duration-300 ease-in-out">
             {yearError}
           </span>
         )}
